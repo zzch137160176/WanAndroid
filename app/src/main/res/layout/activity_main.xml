@@ -29,6 +29,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/white"
                 android:gravity="center"
                 android:text="首页"/>
             <TextView
@@ -36,6 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/white"
                 android:gravity="center"
                 android:text="文章"/>
             <TextView
@@ -43,6 +45,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/white"
                 android:gravity="center"
                 android:text="导航"/>
             <TextView
@@ -50,6 +53,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/white"
                 android:gravity="center"
                 android:text="项目"/>
         </LinearLayout>
