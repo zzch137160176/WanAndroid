@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">library</string>
+    <string name="image_default">IMAGEDEFAULT</string>
+    <string name="please_wait_text">请稍后……</string>
+</resources>

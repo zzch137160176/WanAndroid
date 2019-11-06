@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="show_clean_btn" format="boolean"/>
+    <declare-styleable name="SimpleLineEditText">
+        <attr name="show_clean_btn"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,81 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // 原design包
+    api 'com.google.android.material:material:1.2.0-alpha01'
+
+    // Glide
+    api "com.github.bumptech.glide:glide:4.9.0"
+    annotationProcessor "com.github.bumptech.glide:compiler:4.9.0"
+
+    // Recyclerview
+    api 'androidx.recyclerview:recyclerview:1.1.0-rc01'
+
+    // Swiperefreshlayout
+    api 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha03'
+
+    // Retrofit & okHttp
+    api "com.squareup.retrofit2:retrofit:2.6.0"
+    api "com.squareup.retrofit2:converter-gson:2.6.0"
+    api "com.squareup.retrofit2:adapter-rxjava2:2.6.0"
+    api "com.squareup.okhttp3:logging-interceptor:3.12.0"
+    api "com.squareup.okhttp3:okhttp:4.0.1"
+
+    // rx android
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    // Lifecycle
+    def lifecycle_version = "1.1.1"
+    api "android.arch.lifecycle:extensions:$lifecycle_version"
+    api "android.arch.lifecycle:viewmodel:$lifecycle_version"
+    api "android.arch.lifecycle:livedata:$lifecycle_version"
+    api "android.arch.lifecycle:runtime:$lifecycle_version"
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+    api "android.arch.lifecycle:reactivestreams:$lifecycle_version"
+
+    // 轮播
+    api 'com.youth.banner:banner:1.4.10'
+}
