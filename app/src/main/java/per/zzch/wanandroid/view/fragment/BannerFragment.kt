@@ -1,4 +1,4 @@
-package per.zzch.wanandroid.view
+package per.zzch.wanandroid.view.fragment
 
 import android.content.Context
 import android.widget.ImageView
@@ -9,15 +9,14 @@ import com.bumptech.glide.Glide
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import com.youth.banner.loader.ImageLoader
-import kotlinx.android.synthetic.main.fragment_banner.*
 import per.zzch.library.base.BaseBindingFragment
 import per.zzch.library.utils.sToString
 import per.zzch.wanandroid.R
 import per.zzch.wanandroid.adapter.ArticleItemAdapter
 import per.zzch.wanandroid.databinding.BannerBinding
-import per.zzch.wanandroid.model.Article
 import per.zzch.wanandroid.model.Banner
 import per.zzch.wanandroid.viewmodel.BannerVM
+import per.zzch.wanandroid.widget.BannerImageLoader
 
 
 /**
@@ -73,7 +72,7 @@ class BannerFragment :
 
     private fun initBanner() {
         mBinding.mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
-        mBinding.mBanner.setImageLoader(MyLoader())
+        mBinding.mBanner.setImageLoader(BannerImageLoader(activity))
         mBinding.mBanner.setBannerAnimation(Transformer.Default)
         mBinding.mBanner.setImages(mImgList)
         mBinding.mBanner.setBannerTitles(mContentList)
@@ -91,13 +90,4 @@ class BannerFragment :
         mViewModel.getArticle(page)
     }
 
-    inner class MyLoader : ImageLoader() {
-
-        override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
-            if (imageView != null && activity != null) {
-                Glide.with(activity!!).load(path).into(imageView)
-            }
-        }
-
-    }
 }

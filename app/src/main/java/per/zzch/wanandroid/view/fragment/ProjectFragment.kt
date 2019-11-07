@@ -1,9 +1,9 @@
-package per.zzch.wanandroid.view
+package per.zzch.wanandroid.view.fragment
 
 import per.zzch.library.base.BaseBindingFragment
 import per.zzch.wanandroid.R
-import per.zzch.wanandroid.databinding.ResourceB
-import per.zzch.wanandroid.viewmodel.ResourceVM
+import per.zzch.wanandroid.databinding.ProjectB
+import per.zzch.wanandroid.viewmodel.ProjectVM
 
 /**
  *
@@ -12,10 +12,10 @@ import per.zzch.wanandroid.viewmodel.ResourceVM
  * @date   :2019/11/6
  * @desc   :
  */
-class ResourceFragment : BaseBindingFragment<ResourceVM, ResourceB>(R.layout.fragment_resource) {
+class ProjectFragment : BaseBindingFragment<ProjectVM, ProjectB>(R.layout.fragment_project) {
 
     companion object {
-        fun newInstance() = ResourceFragment()
+        fun newInstance() = ProjectFragment()
     }
 
     override fun initEventAndData() {

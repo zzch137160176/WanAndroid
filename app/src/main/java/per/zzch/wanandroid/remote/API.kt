@@ -1,12 +1,10 @@
 package per.zzch.wanandroid.remote
 
 import io.reactivex.Single
-import per.zzch.wanandroid.model.Article
-import per.zzch.wanandroid.model.Banner
-import per.zzch.wanandroid.model.Page
-import per.zzch.wanandroid.model.Result
+import per.zzch.wanandroid.model.*
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  *
@@ -22,5 +20,11 @@ interface API {
 
     @GET("article/list/{page}/json")
     fun getArticle(@Path("page") page: Int): Single<Result<Page<Article>>>
+
+    @GET("project/tree/json")
+    fun getProjectKind(): Single<Result<List<ProjectKind>>>
+
+    @GET("project/list/{page}/json")
+    fun getProject(@Path("page") page: Int, @Query("cid") kind: Int): Single<Result<Page<Article>>>
 
 }

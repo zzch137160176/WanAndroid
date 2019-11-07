@@ -1,4 +1,4 @@
-package per.zzch.wanandroid.view
+package per.zzch.wanandroid.view.fragment
 
 import per.zzch.library.base.BaseBindingFragment
 import per.zzch.wanandroid.R
@@ -12,10 +12,10 @@ import per.zzch.wanandroid.viewmodel.ArticleVM
  * @date   :2019/11/6
  * @desc   :
  */
-class ArticleFragment : BaseBindingFragment<ArticleVM, ArticleB>(R.layout.fragment_article) {
+class SearchFragment : BaseBindingFragment<ArticleVM, ArticleB>(R.layout.fragment_search) {
 
     companion object {
-        fun newInstance() = ArticleFragment()
+        fun newInstance() = SearchFragment()
     }
 
     override fun initEventAndData() {
