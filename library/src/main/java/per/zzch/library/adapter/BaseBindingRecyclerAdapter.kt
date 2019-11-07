@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 /**
@@ -17,14 +18,25 @@ import androidx.recyclerview.widget.RecyclerView
 abstract class BaseBindingRecyclerAdapter<B : ViewDataBinding, T>(private val layout: Int) :
     RecyclerView.Adapter<BaseBindingRecyclerAdapter<B, T>.ViewHolder<B>>() {
 
-    private var mDataList: List<T>? = null
+    protected var headViewCount: Int = 0
+    protected var footerViewCount: Int = 0
+
+    private var mDataList = ArrayList<T>()
 
     private var mListener: ((Int, T) -> Unit)? = null
 
     abstract fun bindView(holder: ViewHolder<B>, item: T)
 
-    fun setDataList(datas: List<T>?) {
-        mDataList = datas
+    fun getDataList(): List<T> {
+        return mDataList
+    }
+
+    fun setDataList(dataList: List<T>?) {
+        if (dataList == null) {
+            mDataList.clear()
+        } else {
+            mDataList = dataList as ArrayList<T>
+        }
         notifyDataSetChanged()
     }
 
@@ -32,12 +44,17 @@ abstract class BaseBindingRecyclerAdapter<B : ViewDataBinding, T>(private val la
         mListener = doing
     }
 
+    fun init(recyclerView: RecyclerView, layoutManager: RecyclerView.LayoutManager) {
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = this
+    }
+
     override fun onBindViewHolder(holder: ViewHolder<B>, position: Int) {
-        if (!mDataList.isNullOrEmpty()) {
-            bindView(holder, mDataList!![position])
+        if (mDataList.isNotEmpty()) {
+            bindView(holder, mDataList[position])
             holder.binding.root.setOnClickListener {
                 if (mListener != null) {
-                    mListener?.invoke(holder.layoutPosition, mDataList!![position])
+                    mListener?.invoke(holder.layoutPosition, mDataList[position])
                 }
             }
         }
@@ -50,7 +67,7 @@ abstract class BaseBindingRecyclerAdapter<B : ViewDataBinding, T>(private val la
     }
 
     override fun getItemCount(): Int {
-        return mDataList?.size ?: 0
+        return mDataList.size
     }
 
     inner class ViewHolder<B : ViewDataBinding>(val binding: B) :

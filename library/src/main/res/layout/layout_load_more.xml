@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/load_more"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:visibility="visible">
+
+    <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <ProgressBar
+                android:id="@+id/load_more_progress"
+                style="@android:style/Widget.DeviceDefault.ProgressBar.Large"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:indeterminateDuration="1000"
+                android:padding="8dp"/>
+
+        <TextView
+                android:id="@+id/load_more_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/please_wait_text"
+                android:textColor="#A9A4A4"
+                android:textSize="14sp"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+    </FrameLayout>
+
+    <LinearLayout
+            android:id="@+id/foot_empty_root"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+        <ImageView
+                android:id="@+id/foot_empty_img"
+                android:layout_width="196dp"
+                android:layout_height="104dp"
+                android:scaleType="centerInside"
+                android:src="@mipmap/ic_empty_1"/>
+
+        <TextView
+            android:id="@+id/foot_empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:gravity="center"
+            android:textColor="#888888"
+            android:textSize="13sp" />
+
+        <TextView
+                android:id="@+id/foot_empty_todo"
+                android:layout_width="255dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="刷新"
+                android:textSize="18sp"
+                android:visibility="gone"
+                android:background="#DDDDDD"
+                tools:visibility="visible"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+

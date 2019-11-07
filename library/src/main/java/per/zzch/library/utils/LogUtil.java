@@ -19,7 +19,7 @@ import java.util.List;
 public class LogUtil {
 
     private static boolean showLog = true;
-    private static String tag = "hotel`";
+    private static String tag = "log`";
 
     public static void init(boolean isShow, String newTag) {
         showLog = isShow;
@@ -49,7 +49,7 @@ public class LogUtil {
         }
         Gson gson = new Gson();
         String json = gson.toJson(list);
-        i("list: \n");
+        i("list:");
         i(json, true);
     }
 

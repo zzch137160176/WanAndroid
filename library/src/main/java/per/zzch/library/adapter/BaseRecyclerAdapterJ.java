@@ -18,7 +18,7 @@ import per.zzch.library.listener.ItemLongClickListener;
  * @date   :2019/10/8
  * @desc   :
  */
-public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerAdapter<T>.ViewHolder> {
+public abstract class BaseRecyclerAdapterJ<T> extends RecyclerView.Adapter<BaseRecyclerAdapterJ<T>.ViewHolder> {
 
     private List<T> mDataList;
 
