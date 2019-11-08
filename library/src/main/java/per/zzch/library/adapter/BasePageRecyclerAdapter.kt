@@ -196,10 +196,12 @@ abstract class BasePageRecyclerAdapter<P : BasePage<T>, T>(private val layout: I
 
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                if (onLoadListener == null)
+                if (onLoadListener == null) {
                     return
-                if (isLoading || noMore || pageNow == startPage)
+                }
+                if (isLoading || noMore || pageNow == 0) {
                     return
+                }
                 val layoutManager = recyclerView.layoutManager ?: return
                 val visibleItemCount = layoutManager.childCount
                 val totalItemCount = layoutManager.itemCount

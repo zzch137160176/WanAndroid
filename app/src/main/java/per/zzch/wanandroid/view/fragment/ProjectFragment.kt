@@ -1,6 +1,7 @@
 package per.zzch.wanandroid.view.fragment
 
 import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.fragment_project.*
 import per.zzch.library.base.BaseBindingFragment
 import per.zzch.library.listener.ItemClickListener
 import per.zzch.library.widget.DefaultPopup
@@ -42,6 +43,10 @@ class ProjectFragment : BaseBindingFragment<ProjectVM, ProjectB>(R.layout.fragme
         showLoading()
         mViewModel.init()
 
+        mBinding.mRefresh.setOnRefreshListener {
+            mViewModel.getProject(ProjectVM.START_PAGE, mKind)
+        }
+
         mBinding.mPorjectKind = "完整项目"
         mBinding.mProjectKindTv.setOnClickListener {
             if (mPopup == null) {
@@ -59,6 +64,7 @@ class ProjectFragment : BaseBindingFragment<ProjectVM, ProjectB>(R.layout.fragme
         mViewModel.mPage.observe(this, Observer {
             it.refreshPage()
             mAdapter.setPageNow(it)
+            mRefresh.isRefreshing = false
         })
 
         mViewModel.mKindList.observe(this, Observer {
@@ -82,6 +88,7 @@ class ProjectFragment : BaseBindingFragment<ProjectVM, ProjectB>(R.layout.fragme
         mBinding.mPorjectKind = mKindNameList[position]
         mKind = mKindIdList[position]
         mViewModel.getProject(ProjectVM.START_PAGE, mKind)
+        mBinding.mRecyclerView.scrollToPosition(0)
         mPopup?.dismiss()
     }
 

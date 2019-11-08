@@ -40,8 +40,7 @@ class BannerFragment :
         mViewModel.initData()
 
         mBinding.mRefresh.setOnRefreshListener {
-            mBinding.mRefresh.isRefreshing = true
-            mViewModel.getArticle(BannerVM.START_PAGE)
+            mViewModel.getArticle(BannerVM.REQUEST_START_PAGE)
         }
 
         mAdapter.bindRecyclerView(
@@ -49,7 +48,7 @@ class BannerFragment :
             LinearLayoutManager(mBinding.mRecyclerView.context, RecyclerView.VERTICAL, false)
         )
         mAdapter.setOnLoadListener {
-            mViewModel.getArticle(it)
+            mViewModel.getArticle(it - 1)
         }
         mAdapter.setStartPage(BannerVM.START_PAGE)
 

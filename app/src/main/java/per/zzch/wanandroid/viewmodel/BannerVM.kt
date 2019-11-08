@@ -20,6 +20,7 @@ class BannerVM : ViewModel() {
 
     companion object {
         const val START_PAGE = 1
+        const val REQUEST_START_PAGE = 0
     }
 
     val mBannerList = MutableLiveData<List<Banner>>()
@@ -28,7 +29,7 @@ class BannerVM : ViewModel() {
 
     fun initData() {
         getBanner()
-        getArticle(START_PAGE - 1)
+        getArticle(REQUEST_START_PAGE)
     }
 
     private fun getBanner() {
