@@ -117,7 +117,7 @@ abstract class BaseRecyclerAdapterK<ITEM>(private val layout: Int) :
     fun bindRecyclerView(
         recyclerView: RecyclerView,
         layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(
-            recyclerView.context
+            recyclerView.context, RecyclerView.VERTICAL, false
         )
     ) {
         recyclerView.layoutManager = layoutManager

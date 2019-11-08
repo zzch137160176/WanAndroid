@@ -1,19 +1,15 @@
 package per.zzch.wanandroid.view.fragment
 
-import android.content.Context
-import android.widget.ImageView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
-import com.youth.banner.loader.ImageLoader
 import per.zzch.library.base.BaseBindingFragment
 import per.zzch.library.utils.sToString
 import per.zzch.wanandroid.R
 import per.zzch.wanandroid.adapter.ArticleItemAdapter
-import per.zzch.wanandroid.databinding.BannerBinding
+import per.zzch.wanandroid.databinding.BannerB
 import per.zzch.wanandroid.model.Banner
 import per.zzch.wanandroid.viewmodel.BannerVM
 import per.zzch.wanandroid.widget.BannerImageLoader
@@ -27,7 +23,7 @@ import per.zzch.wanandroid.widget.BannerImageLoader
  * @desc   :
  */
 class BannerFragment :
-    BaseBindingFragment<BannerVM, BannerBinding>(R.layout.fragment_banner) {
+    BaseBindingFragment<BannerVM, BannerB>(R.layout.fragment_banner) {
 
     companion object {
         fun newInstance() = BannerFragment()
@@ -38,20 +34,24 @@ class BannerFragment :
 
     private val mAdapter = ArticleItemAdapter()
 
-    private var page = 0
-
     override fun initEventAndData() {
+
+        showLoading()
         mViewModel.initData()
-        mViewModel.getArticle(page)
-        getData(0)
+
+        mBinding.mRefresh.setOnRefreshListener {
+            mBinding.mRefresh.isRefreshing = true
+            mViewModel.getArticle(BannerVM.START_PAGE)
+        }
 
         mAdapter.bindRecyclerView(
             mBinding.mRecyclerView,
             LinearLayoutManager(mBinding.mRecyclerView.context, RecyclerView.VERTICAL, false)
         )
         mAdapter.setOnLoadListener {
-            getData(it)
+            mViewModel.getArticle(it)
         }
+        mAdapter.setStartPage(BannerVM.START_PAGE)
 
         mViewModel.mBannerList.observe(this, Observer {
             for (banner: Banner in it) {
@@ -62,6 +62,8 @@ class BannerFragment :
         })
         mViewModel.mPage.observe(this, Observer {
             mAdapter.setPageNow(it)
+            mBinding.mRefresh.isRefreshing = false
+            dissmissLoading()
         })
 
     }
@@ -84,10 +86,6 @@ class BannerFragment :
         mBinding.mBanner.setIndicatorGravity(BannerConfig.CENTER)
         //开始运行
         mBinding.mBanner.start()
-    }
-
-    private fun getData(page: Int) {
-        mViewModel.getArticle(page)
     }
 
 }

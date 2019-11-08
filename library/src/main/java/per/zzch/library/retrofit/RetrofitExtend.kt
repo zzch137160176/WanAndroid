@@ -5,6 +5,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import per.zzch.library.utils.LogUtil
 
 /**
  *
@@ -24,6 +25,7 @@ fun <T> Single<T>.execute(success: (T) -> Unit, error: (Throwable) -> Unit) {
     this.subscribe({
         success.invoke(it)
     },{
+        LogUtil.e(it.message)
         error.invoke(it)
     })
 }
@@ -32,6 +34,7 @@ fun <T> Single<T>.executeWithDispose(success: (T) -> Unit, error: (Throwable) ->
     return this.subscribe({
         success.invoke(it)
     },{
+        LogUtil.e(it.message)
         error.invoke(it)
     })
 }

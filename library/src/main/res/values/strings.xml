@@ -2,5 +2,5 @@
     <string name="app_name">library</string>
     <string name="image_default">IMAGEDEFAULT</string>
     <string name="please_wait_text">请稍后……</string>
-    <string name="no_data">没有数据</string>
+    <string name="no_data">到底了，没有数据了……</string>
 </resources>

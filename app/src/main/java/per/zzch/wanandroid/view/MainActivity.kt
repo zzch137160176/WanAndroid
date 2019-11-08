@@ -1,9 +1,6 @@
 package per.zzch.wanandroid.view
 
-import android.content.res.Resources
 import android.graphics.Color
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -88,19 +85,19 @@ class MainActivity : BaseBindingActivity<MainVM, MainB>(R.layout.activity_main),
         clearTab()
         mBinding.mViewPager.currentItem = position
         when (position) {
-            0 -> mBinding.mPage1.setBackgroundColor(Color.rgb(238,238,238))
-            1 -> mBinding.mPage2.setBackgroundColor(Color.rgb(238,238,238))
-            2 -> mBinding.mPage3.setBackgroundColor(Color.rgb(238,238,238))
-            3 -> mBinding.mPage4.setBackgroundColor(Color.rgb(238,238,238))
+            0 -> mBinding.mPage1.setBackgroundColor(Color.rgb(238, 238, 238))
+            1 -> mBinding.mPage2.setBackgroundColor(Color.rgb(238, 238, 238))
+            2 -> mBinding.mPage3.setBackgroundColor(Color.rgb(238, 238, 238))
+            3 -> mBinding.mPage4.setBackgroundColor(Color.rgb(238, 238, 238))
         }
     }
 
     private fun clearTab() {
         with(mBinding) {
-            mPage1.setBackgroundColor(Color.rgb(255,255,255))
-            mPage2.setBackgroundColor(Color.rgb(255,255,255))
-            mPage3.setBackgroundColor(Color.rgb(255,255,255))
-            mPage4.setBackgroundColor(Color.rgb(255,255,255))
+            mPage1.setBackgroundColor(Color.rgb(255, 255, 255))
+            mPage2.setBackgroundColor(Color.rgb(255, 255, 255))
+            mPage3.setBackgroundColor(Color.rgb(255, 255, 255))
+            mPage4.setBackgroundColor(Color.rgb(255, 255, 255))
         }
     }
 }

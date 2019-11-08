@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
 import per.zzch.library.utils.ViewModelClassUtil;
+import per.zzch.library.widget.ProgressDialog;
 
 /**
  * @author :曾佐丞
@@ -27,6 +28,11 @@ public abstract class BaseBindingFragment<VM extends ViewModel, B extends ViewDa
     private int mLayout;
 
     protected Context mContext;
+
+    /**
+     * 等待框
+     */
+    private ProgressDialog mProgressDialog = null;
 
     protected VM mViewModel;
 
@@ -70,6 +76,22 @@ public abstract class BaseBindingFragment<VM extends ViewModel, B extends ViewDa
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         onActivityCreate();
+    }
+
+    /**
+     * progressDialog的操作：展示、取消
+     */
+    public void showLoading() {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(mContext);
+        }
+        mProgressDialog.show();
+    }
+
+    public void dissmissLoading() {
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+        }
     }
 
     /**

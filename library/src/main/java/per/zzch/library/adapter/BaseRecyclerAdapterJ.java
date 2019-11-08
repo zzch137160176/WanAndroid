@@ -43,6 +43,10 @@ public abstract class BaseRecyclerAdapterJ<T> extends RecyclerView.Adapter<BaseR
         notifyDataSetChanged();
     }
 
+    public List<T> getDataList() {
+        return mDataList;
+    }
+
     public void setOnItemClickListener(ItemClickListener<T> listener) {
         mItemClickListener = listener;
     }
@@ -59,18 +63,20 @@ public abstract class BaseRecyclerAdapterJ<T> extends RecyclerView.Adapter<BaseR
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        bindView(holder, position);
-        holder.itemView.setOnClickListener(v -> {
-            if (mItemClickListener != null) {
-                mItemClickListener.itemClickDoing(mDataList.get(position), position);
-            }
-        });
-        holder.itemView.setOnLongClickListener(v -> {
-            if (mItemLongClickListener != null) {
-                mItemLongClickListener.itemLongClickDoing(mDataList.get(position), position);
-            }
-            return true;
-        });
+        if (mDataList != null && !mDataList.isEmpty()) {
+            bindView(holder, position);
+            holder.itemView.setOnClickListener( v -> {
+                if (mItemClickListener != null) {
+                    mItemClickListener.itemClickDoing(mDataList.get(position), position);
+                }
+            });
+            holder.itemView.setOnLongClickListener(v -> {
+                if (mItemLongClickListener != null) {
+                    mItemLongClickListener.itemLongClickDoing(mDataList.get(position), position);
+                }
+                return true;
+            });
+        }
     }
 
     @Override

@@ -9,8 +9,8 @@ import per.zzch.library.R;
 /**
  * @author :曾佐丞
  * @e-mail :zengzuocheng@jimimax.com
- * @date   :2019/9/27
- * @desc   :
+ * @date :2019/9/27
+ * @desc :
  */
 public class ProgressDialog extends Dialog {
 
@@ -21,8 +21,8 @@ public class ProgressDialog extends Dialog {
     }
 
     public void setMessage(String msg) {
-        TextView msgTV = findViewById(R.id.dialog_message);
-        msgTV.setText(msg);
+        TextView msgTv = findViewById(R.id.dialog_message);
+        msgTv.setText(msg);
     }
 
     public void changeCancelable(Boolean cancelable) {

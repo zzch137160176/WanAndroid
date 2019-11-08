@@ -122,6 +122,8 @@ abstract class BasePageRecyclerAdapter<P : BasePage<T>, T>(private val layout: I
      */
     private var lastVisibleItemPosition: Int = 0
 
+    private var startPage: Int = 0
+
     private var isLoading: Boolean = false
 
     private var noMore: Boolean = false
@@ -196,7 +198,7 @@ abstract class BasePageRecyclerAdapter<P : BasePage<T>, T>(private val layout: I
                 super.onScrollStateChanged(recyclerView, newState)
                 if (onLoadListener == null)
                     return
-                if (isLoading || noMore || pageNow == 0)
+                if (isLoading || noMore || pageNow == startPage)
                     return
                 val layoutManager = recyclerView.layoutManager ?: return
                 val visibleItemCount = layoutManager.childCount
@@ -229,7 +231,7 @@ abstract class BasePageRecyclerAdapter<P : BasePage<T>, T>(private val layout: I
 
     fun setPageNow(page: P) {
         this.pageNow = page.page
-        if (page.page == 0) {
+        if (page.page == startPage) {
             setData(page.list)
         } else {
             addData(page.list)
@@ -266,6 +268,14 @@ abstract class BasePageRecyclerAdapter<P : BasePage<T>, T>(private val layout: I
         if (mFooter == null)
             return
         mFooter?.hideFooter()
+    }
+
+    fun getStartPage(): Int {
+        return startPage
+    }
+
+    fun setStartPage(startPage: Int) {
+        this.startPage = startPage
     }
 
     private fun resetFooter() {
