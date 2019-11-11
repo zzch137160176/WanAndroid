@@ -10,7 +10,7 @@ import per.zzch.wanandroid.R
 import per.zzch.wanandroid.databinding.MainB
 import per.zzch.wanandroid.view.fragment.BannerFragment
 import per.zzch.wanandroid.view.fragment.ProjectFragment
-import per.zzch.wanandroid.view.fragment.ResourceFragment
+import per.zzch.wanandroid.view.fragment.NavigationFragment
 import per.zzch.wanandroid.view.fragment.SearchFragment
 import per.zzch.wanandroid.viewmodel.MainVM
 
@@ -19,7 +19,7 @@ class MainActivity : BaseBindingActivity<MainVM, MainB>(R.layout.activity_main),
 
     private val mBannerFragment = BannerFragment.newInstance()
     private val mProjectFragment = ProjectFragment.newInstance()
-    private val mResourceFragment = ResourceFragment.newInstance()
+    private val mNavigationFragment = NavigationFragment.newInstance()
     private val mSearchFragment = SearchFragment.newInstance()
 
     override fun initEventAndData() {
@@ -75,7 +75,7 @@ class MainActivity : BaseBindingActivity<MainVM, MainB>(R.layout.activity_main),
         return when (position) {
             0 -> mBannerFragment
             1 -> mProjectFragment
-            2 -> mResourceFragment
+            2 -> mNavigationFragment
             3 -> mSearchFragment
             else -> mBannerFragment
         }

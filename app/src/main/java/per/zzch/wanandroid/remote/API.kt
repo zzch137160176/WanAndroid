@@ -27,4 +27,6 @@ interface API {
     @GET("project/list/{page}/json")
     fun getProject(@Path("page") page: Int, @Query("cid") kind: Int): Single<Result<Page<Article>>>
 
+    @GET("navi/json")
+    fun getNavigation(): Single<Result<List<Navigation<Article>>>>
 }

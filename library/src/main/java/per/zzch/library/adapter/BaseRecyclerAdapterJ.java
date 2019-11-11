@@ -81,10 +81,13 @@ public abstract class BaseRecyclerAdapterJ<T> extends RecyclerView.Adapter<BaseR
 
     @Override
     public int getItemCount() {
+        if (mDataList == null) {
+            return 0;
+        }
         return mDataList.size();
     }
 
-    protected class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
