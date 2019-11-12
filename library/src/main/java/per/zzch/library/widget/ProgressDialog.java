@@ -17,7 +17,6 @@ public class ProgressDialog extends Dialog {
     public ProgressDialog(Context context) {
         super(context);
         setContentView(R.layout.layout_progress);
-        setCancelable(false);
     }
 
     public void setMessage(String msg) {

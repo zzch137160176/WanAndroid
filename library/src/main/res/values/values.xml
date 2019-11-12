@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+<!--    文本框-->
+    <attr name="text_pressed_bg_color" format="color"/>
+    <attr name="text_bg_color" format="color"/>
+    <attr name="text_radius" format="dimension"/>
+    <declare-styleable name="RoundTextView">
+        <attr name="text_pressed_bg_color"/>
+        <attr name="text_bg_color"/>
+        <attr name="text_radius"/>
+    </declare-styleable>
+
+<!--    输入框-->
     <attr name="show_clean_btn" format="boolean"/>
-    <declare-styleable name="SimpleLineEditText">
+    <attr name="edit_bg" format="reference"/>
+    <declare-styleable name="NullEditText">
         <attr name="show_clean_btn"/>
     </declare-styleable>
+    <declare-styleable name="InputEditText">
+        <attr name="show_clean_btn"/>
+        <attr name="edit_bg"/>
+    </declare-styleable>
+
+<!--    标题栏-->
+    <attr name="title_text" format="string"/>
+    <attr name="title_text_color" format="color"/>
+    <attr name="title_start_img" format="reference"/>
+    <attr name="title_end_img" format="reference"/>
+    <attr name="title_end_text" format="string"/>
+    <attr name="title_end_color" format="color"/>
+    <attr name="title_end_size" format="dimension"/>
+    <attr name="title_bg_color" format="color"/>
+    <attr name="title_start_enable" format="boolean"/>
+    <declare-styleable name="BaseToolbar">
+        <attr name="title_text"/>
+        <attr name="title_text_color"/>
+        <attr name="title_start_img"/>
+        <attr name="title_end_img"/>
+        <attr name="title_end_text"/>
+        <attr name="title_end_color"/>
+        <attr name="title_end_size"/>
+        <attr name="title_bg_color"/>
+        <attr name="title_start_enable"/>
+    </declare-styleable>
+    
 </resources>

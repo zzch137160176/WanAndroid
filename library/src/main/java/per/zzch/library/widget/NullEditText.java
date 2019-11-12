@@ -1,6 +1,7 @@
 package per.zzch.library.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -15,50 +16,55 @@ import per.zzch.library.R;
  * @date :2019/10/24
  * @desc :输入框为一根简单的线，右端有清空按钮
  */
-public class SimpleLineEditText extends AppCompatEditText {
+public class NullEditText extends AppCompatEditText {
 
     public Drawable mCleanBtn;
 
-    private boolean isShowCleanBtn;
+    private boolean isShowClean;
 
-    public SimpleLineEditText(Context context) {
-        super(context);
-        init();
+    public NullEditText(Context context) {
+        this(context, null);
     }
 
-    public SimpleLineEditText(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
+    public NullEditText(Context context, AttributeSet attrs) {
+        this(context, attrs, R.attr.editTextStyle);
     }
 
-    public SimpleLineEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public NullEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(context, attrs);
     }
 
-    private void init() {
+    private void init(Context context, AttributeSet attrs) {
 
+        Drawable[] drawables = this.getCompoundDrawablesRelative();
         // 添加清空按钮
-        Drawable[] compoundDrawables = this.getCompoundDrawables();
         if (mCleanBtn == null) {
-            mCleanBtn = getResources().getDrawable(R.drawable.ic_clean_input);
-            // 重新设置四个方位的素材，顺序为左，上，右，下
-            setCompoundDrawablesWithIntrinsicBounds(
-                    compoundDrawables[0], compoundDrawables[1],
-                    mCleanBtn, getResources().getDrawable(R.drawable.edit_line));
+            mCleanBtn = getResources().getDrawable(R.drawable.ic_clean_input, null);
         }
+        setCompoundDrawablesRelativeWithIntrinsicBounds(
+                drawables[0], drawables[1],
+                mCleanBtn, drawables[3]);
+
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.NullEditText);
+
+        boolean flag = ta.getBoolean(R.styleable.NullEditText_show_clean_btn, false);
+        setShowClean(flag);
+
+        setBackgroundDrawable(null);
+
+        ta.recycle();
+
     }
 
-    public void setShowCleanBtn(boolean flag) {
-        isShowCleanBtn = flag;
-        if (isShowCleanBtn) {
-            setCompoundDrawables(getCompoundDrawables()[0],
-                    getCompoundDrawables()[1], null,
-                    getCompoundDrawables()[3]);
+    public void setShowClean(boolean flag) {
+        isShowClean = flag;
+        Drawable[] drawables = this.getCompoundDrawablesRelative();
+        if (isShowClean) {
+            setCompoundDrawablesRelative(drawables[0], drawables[1], mCleanBtn, drawables[3]);
         } else {
-            setCompoundDrawables(getCompoundDrawables()[0],
-                    getCompoundDrawables()[1], mCleanBtn,
-                    getCompoundDrawables()[3]);
+            // 重新设置四个方位的素材，顺序为左，上，右，下
+            setCompoundDrawablesRelative(drawables[0], drawables[1], null, drawables[3]);
         }
     }
 

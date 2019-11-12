@@ -2,9 +2,7 @@ package per.zzch.wanandroid.remote
 
 import io.reactivex.Single
 import per.zzch.wanandroid.model.*
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  *
@@ -29,4 +27,10 @@ interface API {
 
     @GET("navi/json")
     fun getNavigation(): Single<Result<List<Navigation<Article>>>>
+
+    @POST("user/login")
+    fun login(@Body param: LoginParam): Single<Result<List<Navigation<Article>>>>
+
+    @POST("user/register")
+    fun register(@Body param: RegisterParam): Single<Result<List<Navigation<Article>>>>
 }

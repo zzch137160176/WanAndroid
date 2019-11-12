@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <per.zzch.library.widget.BaseToolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <per.zzch.library.widget.NullEditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="50dp"
+        android:drawableStart="@mipmap/ic_login_account"
+        android:drawablePadding="20dp"
+        android:hint="@string/account_input"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="#333" />
+
+    <per.zzch.library.widget.NullEditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@mipmap/ic_login_psw"
+        android:drawablePadding="20dp"
+        android:hint="@string/psw_input"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="#333" />
+
+    <per.zzch.library.widget.NullEditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@mipmap/ic_login_psw"
+        android:drawablePadding="20dp"
+        android:hint="@string/re_psw_input"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="#333" />
+
+    <per.zzch.library.widget.RoundTextView
+        android:id="@+id/mRegisterSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:text="@string/register"
+        app:text_bg_color="@color/colorPrimary"
+        app:text_radius="5dp"
+        app:text_pressed_bg_color="@color/white"/>
+</LinearLayout>

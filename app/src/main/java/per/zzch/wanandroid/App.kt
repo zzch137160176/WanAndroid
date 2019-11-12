@@ -11,4 +11,9 @@ import per.zzch.library.A
  */
 class App: A() {
 
+    override fun onCreate() {
+        super.onCreate()
+        instance = this
+    }
+
 }

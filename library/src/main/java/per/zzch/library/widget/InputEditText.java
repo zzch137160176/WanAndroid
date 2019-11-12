@@ -1,6 +1,7 @@
 package per.zzch.library.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -12,8 +13,8 @@ import per.zzch.library.R;
 /**
  * @author :曾佐丞
  * @e-mail :zengzuocheng@jimimax.com
- * @date   :2019/10/24
- * @desc   :
+ * @date :2019/10/24
+ * @desc :
  */
 public class InputEditText extends AppCompatEditText {
 
@@ -22,34 +23,35 @@ public class InputEditText extends AppCompatEditText {
     private boolean isShowCleanBtn;
 
     public InputEditText(Context context) {
-        super(context);
-        init();
+        this(context, null);
     }
 
     public InputEditText(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
+        this(context, attrs, R.attr.editTextStyle);
     }
 
     public InputEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(context, attrs);
     }
 
-    private void init() {
+    private void init(Context context, AttributeSet attrs) {
+
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.InputEditText);
 
         // 设置背景
-        setBackground(getResources().getDrawable(R.drawable.edit_bg));
+        int background = ta.getResourceId(R.styleable.InputEditText_edit_bg, R.drawable.edit_bg);
+        setBackground(getResources().getDrawable(background, null));
 
-//        setTextCursorDrawable(getResources().getDrawable(R.drawable.black_cursor));
+        ta.recycle();
 
         // 添加清空按钮
         Drawable[] compoundDrawables = this.getCompoundDrawables();
         if (mCleanBtn == null) {
-            mCleanBtn = getResources().getDrawable(R.drawable.ic_clean_input);
+            mCleanBtn = getResources().getDrawable(R.drawable.ic_clean_input, null);
             // 重新设置四个方位的素材，顺序为左，上，右，下
             setCompoundDrawablesWithIntrinsicBounds(
-                    compoundDrawables[0],compoundDrawables[1],mCleanBtn,compoundDrawables[2]);
+                    compoundDrawables[0], compoundDrawables[1], mCleanBtn, compoundDrawables[2]);
         }
     }
 
@@ -74,7 +76,7 @@ public class InputEditText extends AppCompatEditText {
      */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec,heightMeasureSpec);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         // 设置宽高
 //        setMeasuredDimension(measure(widthMeasureSpec), measure(heightMeasureSpec));
     }

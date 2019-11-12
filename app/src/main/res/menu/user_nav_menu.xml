@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_user_info"
+        android:icon="@mipmap/ic_login_account"
+        android:title="@string/menu_user_info" />
+    <item
+        android:id="@+id/menu_item_user_collect"
+        android:icon="@mipmap/ic_collect"
+        android:title="@string/menu_user_collect" />
+</menu>

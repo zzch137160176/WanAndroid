@@ -19,7 +19,7 @@ import per.zzch.library.widget.ProgressDialog;
  * @date   :2019/10/8
  * @desc   :Fragment 基类。该类中额外加入了Framgent中特殊的生命周期，可作参考。
  */
-public abstract class BaseFragment<P extends IPresenter> extends Fragment implements IView {
+public abstract class BasePresenterFragment<P extends IPresenter> extends Fragment implements IView {
 
     // fragment中的context，在onAttach()方法中初始化
     public Context mContext;

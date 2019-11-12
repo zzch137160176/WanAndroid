@@ -26,8 +26,8 @@ public class ViewDelegate {
     }
 
     private void obtainAttributes(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SimpleLineEditText);
-        typedArray.getBoolean(R.styleable.SimpleLineEditText_show_clean_btn, false);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NullEditText);
+        typedArray.getBoolean(R.styleable.NullEditText_show_clean_btn, false);
         typedArray.recycle();
     }
 
